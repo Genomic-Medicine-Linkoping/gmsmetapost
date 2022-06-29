@@ -174,8 +174,8 @@ def check_samplesheet(file_in, file_out):
         # Validate the existence of the expected header columns.
         if not required_columns.issubset(reader.fieldnames):
             logger.critical(
-                "The sample sheet **must** contain the column headers: %s.",
-                ", ".join(required_columns),
+                "The sample sheet **must** contain the column headers: '%s'\nbut had instead: '%s'",
+                ", ".join(required_columns),", ".join(reader.fieldnames),
             )
             sys.exit(1)
         # Validate each row.
